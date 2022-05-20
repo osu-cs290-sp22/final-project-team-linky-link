@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+  <head>
+
+    <meta charset="utf-8">
+    <title>Clueless Closet</title>
+
+    <!-- This is a 3rd-party stylesheet to incorporate the font family to be used for this page ("Roboto"). -->
+    <!--link href="https://fonts.googleapis.com/css2?family=Roboto:wght@100;400&display=swap" rel="stylesheet"-->
+
+    <!-- This 3rd-party stylesheet incorporates SVG icons from Font Awesome: http://fontawesome.com/ -->
+    <!--link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.4/css/all.css" crossorigin="anonymous"-->
+
+    <link rel="stylesheet" href="style.css" media="screen">
+
+    <script src="index.js" charset="utf-8" defer></script>
+
+  </head>
+
+  <body>
+
+    <header>
+      <!-- <a href="#"><h1 class="site-title"><i class="far fa-hand-lizard"></i> tweeter</h1></a> -->
+      <img alt="clueless closet" class="site-title" src="images/site-title.jpg"/>
+
+      <!-- <nav class="navbar">
+        <ul class="navlist">
+          <li class="navitem navlink active"><a href="#">Home</a></li>
+          <li class="navitem navlink"><a href="#">Trending</a></li>
+          <li class="navitem navlink"><a href="#">People</a></li>
+          <li class="navitem navbar-search">
+            <input type="text" id="navbar-search-input" placeholder="Search...">
+            <button type="button" id="navbar-search-button"><i class="fas fa-search"></i></button>
+          </li>
+        </ul>
+      </nav> -->
+    </header>
+
+    <main class="closet-container">
+
+      <article class="shirts">
+        <div class="shirt-content">
+          <p class="shirt-text">
+            Select a shirt for your outfit.
+          </p>
+          <!-- <img alt="image of shirt" class="shirt-image" src=""/> -->
+        </div>
+      </article>
+
+      <article class="bottoms">
+        <div class="bottom-content">
+          <p class="bottom-text">
+            Select bottoms for your outfit.
+          </p>
+        </div>
+      </article>
+
+    </main>
+
+    <button type="button" id="create-outfit-button"><i class="outfit-button"></i></button>
+
+    <div id="modal-backdrop" class="hidden"></div>
+    <div id="create-outfit-modal" class="hidden">
+      <div class="modal-dialog">
+
+        <div class="modal-header">
+          <h3>Name your outfit</h3>
+          <button type="button" class="modal-close-button">&times;</button>
+        </div>
+
+        <div class="modal-body">
+          <div class="name-input-element">
+            <label for="name-text-input">Outfit name text</label>
+            <textarea id="name-text-input"></textarea>
+          </div>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="modal-cancel-button">Cancel</button>
+          <button type="button" class="modal-accept-button">Create Outfit</button>
+        </div>
+
+      </div>
+    </div>
+
+  </body>
+
+</html>
