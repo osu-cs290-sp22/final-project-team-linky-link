@@ -11,10 +11,9 @@ a {
 .site-title {
     margin: 0;
     padding: 10px 20px;
-    font-size: 30px;
-    font-weight: 100;
-    background-color: #319df6;
     color: #fff;
+    width: 1000px;
+    height: auto;
 }
 
 .closet-container {
