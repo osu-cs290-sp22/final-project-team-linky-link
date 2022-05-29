@@ -1,10 +1,10 @@
 # final-project-team-linky-link
 **Demo with Rob Hess at 2:50pm on Thursday, 6/09/2022**
 
-Team 7
-Aileen Castro-Guzman, castroga@oregonstate.edu
-Jonathan Moreno-Farias, morenofj@oregonstate.edu
-Adrian Luis-Martinez, 
+## Team 7
+    * Aileen Castro-Guzman, castroga@oregonstate.edu
+    * Jonathan Moreno-Farias, morenofj@oregonstate.edu
+    * Adrian Luis-Martinez, 
 
 Inspired by the movie Clueless, our final project idea is a website where people can upload pictures of their clothes and have an outfit generated for them. This is an opportunity to help people who are not sure what to wear by having an app that generates an outfit from their closet for them. 
 
