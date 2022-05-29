@@ -18,8 +18,8 @@ a {
 
 .closet-container {
     margin: 50px 10%;
-    display: flex;
-    flex-wrap: wrap;
+    display: flexbox;
+    /* flex-wrap: wrap; */
 }
 
 .shirts {
@@ -30,7 +30,8 @@ a {
     padding: 20px;
     border: 1px solid #dadada;
     border-radius: 2px;
-    background-color: #fff;
+    background-color: #87cbde;
+    color: #037796;
 }
 
 .shirt-content {
@@ -56,7 +57,8 @@ a {
     padding: 20px;
     border: 1px solid #dadada;
     border-radius: 2px;
-    background-color: #fff;
+    background-color: #87cbde;
+    color: #037796;
 }
 
 .bottom-content {
@@ -82,8 +84,8 @@ a {
     width: 150px;
     border: none;
     font-size: 20px;
-    background-color: #196e96;
-    color: #fff;
+    background-color: #87cbde;
+    color: #037796;
     cursor: pointer;
     box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.25);
 }
