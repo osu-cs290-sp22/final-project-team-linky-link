@@ -48,8 +48,9 @@ a {
     margin: 0;
 }
 
+/* for shirt images */
 .shirt-image {
-    width: 500px;
+    width: 300px;
     height: auto;
 }
 
@@ -94,6 +95,12 @@ a {
     margin-top: 8px;
     text-align: center;
     font-weight: bold;
+}
+
+/* for images of pants */
+.bottoms-image {
+    width: 300px;
+    height: auto;
 }
 
 #create-outfit-button {

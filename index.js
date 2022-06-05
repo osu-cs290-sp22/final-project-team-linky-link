@@ -8,8 +8,12 @@
 
 console.log("== document:", document)
 
+/* Referenced:  https://www.youtube.com/watch?v=y_5P8KuxnbY&t=66s for image sliders */
+/* image slider for shirts */ 
 var imgbtn = document.querySelector('.shirt-image');
-var images = ['shirt-one.PNG', 'shirt-two.PNG'];
+var images = ['shirt-one.PNG', 'shirt-two.PNG', 'shirt-three.PNG', 
+'shirt-four.PNG', 'shirt-five.PNG', 'shirt-six.PNG', 'shirt-seven.PNG', 
+'shirt-eight.PNG', 'shirt-nine.PNG', 'shirt-ten.PNG'];
 var i = 0;
 
 function prev() {
@@ -26,6 +30,28 @@ function next() {
 
 function setImg() {
   return imgbtn.setAttribute('src', 'images/' + images[i]);
+}
+
+/* image slider for bottoms */ 
+var imgbtnB = document.querySelector('.bottoms-image');
+var imagesB = ['bottoms-one.PNG', 'bottoms-two.PNG', 'bottoms-three.PNG', 
+'bottoms-four.PNG', 'bottoms-five.PNG', 'bottoms-six.PNG', 'bottoms-seven.PNG'];
+var j = 0;
+
+function prevB() {
+  if(j <= 0) j = imagesB.length;
+  j--;
+  return setImgB();
+}
+
+function nextB() {
+  if(j >= imagesB.length - 1) j = -1;
+  j++;
+  return setImgB();
+}
+
+function setImgB() {
+  return imgbtnB.setAttribute('src', 'images/' + imagesB[j]);
 }
 
 /* Referenced:  https://www.w3schools.com/howto/howto_css_modals.asp for unhiding modal */
