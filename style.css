@@ -2,6 +2,8 @@ body {
     font-family: Roboto, Helvetica, sans-serif;
     margin: 0;
     background-color: #eee;
+    align-items: center;
+    text-align: center;
 }
 
 a {
@@ -37,16 +39,34 @@ a {
 .shirt-content {
     flex: 1 1 80%;
     margin-left: 10px;
+    margin-top: 8px;
+    text-align: center;
+    font-weight: bold;
 }
 
 .shirt-content p {
     margin: 0;
 }
 
-.shirt-content {
-    margin-top: 8px;
-    text-align: center;
-    font-weight: bold;
+.shirt-image {
+    width: 500px;
+    height: auto;
+}
+
+.btn {
+    border: none;
+    outline: none;
+    background: #87cbde;
+    padding: 10px 30px;
+    font-size: 20px;
+    color: #037796;
+    cursor: pointer;
+    margin: 10px auto;
+}
+
+.btn:hover {
+    background: #037796;
+    color: #87cbde;
 }
 
 .bottoms {

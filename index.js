@@ -8,6 +8,26 @@
 
 console.log("== document:", document)
 
+var imgbtn = document.querySelector('.shirt-image');
+var images = ['shirt-one.PNG', 'shirt-two.PNG'];
+var i = 0;
+
+function prev() {
+  if(i <= 0) i = images.length;
+  i--;
+  return setImg();
+}
+
+function next() {
+  if(i >= images.length - 1) i = -1;
+  i++;
+  return setImg();
+}
+
+function setImg() {
+  return imgbtn.setAttribute('src', 'images/' + images[i]);
+}
+
 /* Referenced:  https://www.w3schools.com/howto/howto_css_modals.asp for unhiding modal */
 /* get the modal */ 
 var modal = document.getElementById("create-outfit-modal")
@@ -82,7 +102,7 @@ var closetContainer = document.querySelector(".closet-container")
 //     console.log("== closetSection:", closetSection)
 // }
 
-/* get the button that adds the twit */
+/* get the button that adds the outfit */
 var add = document.getElementsByClassName("modal-accept-button")[0]
 
 var outfitWords = []
