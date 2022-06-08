@@ -1,0 +1,25 @@
+{
+  "name": "final-project-team-linky-link",
+  "version": "1.0.0",
+  "description": "**Demo with Rob Hess at 2:50pm on Thursday, 6/09/2022**",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/osu-cs290-sp22/final-project-team-linky-link.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/osu-cs290-sp22/final-project-team-linky-link/issues"
+  },
+  "homepage": "https://github.com/osu-cs290-sp22/final-project-team-linky-link#readme",
+  "dependencies": {
+    "ejs": "^3.1.8",
+    "express": "^4.18.1"
+  }
+}
