@@ -8,7 +8,7 @@
     "start": "node server.js"
     /*"build": "//outfit.handlebars -f
     public/outfitTemplate.js",
-    "prestart": "npm run build", */
+    "prestart": "npm run build",*/
   },
   "repository": {
     "type": "git",
