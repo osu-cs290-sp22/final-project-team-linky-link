@@ -38,6 +38,7 @@ server.listen(port, function() {
     console.log("== Server is listening on port " + port)
 })*/
 const express = require('express');
+var exphbs = require('express-handlebars');
 const app = express();
 const port = 3000;
 
