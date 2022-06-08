@@ -1,11 +1,3 @@
-/*
- * Add your JavaScript to this file to complete the assignment.  Don't forget
- * to add your name and @oregonstate email address below.
- *
- * Name: Aileen Abril Castro-Guzman
- * Email: castroga@oregonstate.edu
- */
-
 console.log("== document:", document)
 
 /* Referenced:  https://www.youtube.com/watch?v=y_5P8KuxnbY&t=66s for image sliders */
