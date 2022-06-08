@@ -1,0 +1,87 @@
+{
+    "shirt1": {
+        "photo": {
+            "url": "public/images/shirt-one.PNG"
+        }
+    },
+    "shirt2": {
+        "photo": {
+            "url": "public/images/shirt-two.PNG"
+        }
+    },
+    "shirt3": {
+        "photo": {
+            "url": "public/images/shirt-three.PNG"
+        }
+    },
+    "shirt4": {
+        "photo": {
+            "url": "public/images/shirt-four.PNG"
+        }
+    },
+    "shirt5": {
+        "photo": {
+            "url": "public/images/shirt-five.PNG"
+        }
+    },
+    "shirt6": {
+        "photo": {
+            "url": "public/images/shirt-six.PNG"
+        }
+    },
+    "shirt7": {
+        "photo": {
+            "url": "public/images/shirt-seven.PNG"
+        }
+    },
+    "shirt8": {
+        "photo": {
+            "url": "public/images/shirt-eight.PNG"
+        }
+    },
+    "shirt9": {
+        "photo": {
+            "url": "public/images/shirt-nine.PNG"
+        }
+    },
+    "shirt10": {
+        "photo": {
+            "url": "public/images/shirt-ten.PNG"
+        }
+    },
+    "bottoms1": {
+        "photo": {
+            "url": "public/images/bottoms-one.PNG"
+        }
+    }, 
+    "bottoms2": {
+        "photo": {
+            "url": "public/images/bottoms-two.PNG"
+        }
+    }, 
+    "bottoms3": {
+        "photo": {
+            "url": "public/images/bottoms-three.PNG"
+        }
+    }, 
+    "bottoms4": {
+        "photo": {
+            "url": "public/images/bottoms-four.PNG"
+        }
+    }, 
+    "bottoms5": {
+        "photo": {
+            "url": "public/images/bottoms-five.PNG"
+        }
+    }, 
+    "bottoms6": {
+        "photo": {
+            "url": "public/images/bottoms-six.PNG"
+        }
+    }, 
+    "bottoms7": {
+        "photo": {
+            "url": "public/images/bottoms-seven.PNG"
+        }
+    }
+}

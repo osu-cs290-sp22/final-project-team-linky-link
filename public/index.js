@@ -82,13 +82,13 @@ cancel.onclick = function() {
     modalBack.style.display = "none"
 }
 
-// /* when the user clicks anywhere outside of the modal, close it */
-// window.onclick = function(event) {
-//   if (event.target == modal) {
-//     modal.style.display = "none"
-//     modalBack.style.display = "none"
-//   }
-// }
+/* when the user clicks anywhere outside of the modal, close it */
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none"
+    modalBack.style.display = "none"
+  }
+}
 
 
 var closetContainer = document.querySelector(".closet-container")
