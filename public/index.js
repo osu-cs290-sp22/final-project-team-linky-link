@@ -1,4 +1,6 @@
 console.log("== document:", document)
+import myJson from './outfitData.json' assert {type: 'json'}
+console.log("== shirts:", myJson.shirts)
 
 /* Referenced:  https://www.youtube.com/watch?v=y_5P8KuxnbY&t=66s for image sliders */
 /* image slider for shirts */ 
