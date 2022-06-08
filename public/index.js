@@ -1,5 +1,5 @@
 console.log("== document:", document)
-import myJson from './outfitData.json' assert {type: 'json'}
+import myJson from './outfitData.json' 
 console.log("== shirts:", myJson.shirts)
 
 /* Referenced:  https://www.youtube.com/watch?v=y_5P8KuxnbY&t=66s for image sliders */
@@ -63,6 +63,8 @@ var span = document.getElementsByClassName("modal-close-button")[0]
 var cancel = document.getElementsByClassName("modal-cancel-button")[0]
 
 var outfitInput = document.getElementById('name-text-input')
+var shirtInput = document.getElementById('shirt-text-input')
+var bottomsInput = document.getElementById('bottoms-text-input')
 
 
 /* when the user clicks on the button, open the modal */
@@ -126,6 +128,8 @@ var closetContainer = document.querySelector(".closet-container")
 var add = document.getElementsByClassName("modal-accept-button")[0]
 
 var outfitWords = []
+var shirtWords = []
+var bottomsWords = []
 
 function handleOutfitWordsEntered(event) {
   console.log("== handleOutfitWordsEntered() called")
@@ -135,6 +139,21 @@ function handleOutfitWordsEntered(event) {
 
 outfitInput.addEventListener('change', handleOutfitWordsEntered)
 
+function handleShirtWordsEntered(event) {
+  console.log("== handleShirtWordsEntered() called")
+  shirtWords = event.currentTarget.value
+  console.log("  - shirt:", shirtWords)
+}
+
+shirtInput.addEventListener('change', handleShirtWordsEntered)
+
+function handleBottomsWordsEntered(event) {
+  console.log("== handleBottomsWordsEntered() called")
+  bottomsWords = event.currentTarget.value
+  console.log("  - bottoms:", bottomsWords)
+}
+
+bottomsInput.addEventListener('change', handleBottomsWordsEntered)
 
 /* when the user clicks add, close the modal and add twit */
 add.onclick = function() {
