@@ -37,18 +37,25 @@ var server = http.createServer(function(req, res) {
 server.listen(port, function() {
     console.log("== Server is listening on port " + port)
 })*/
+// website server using express
 const express = require('express');
 const app = express();
 const port = 3000;
-
+//gathering alll files
 app.use(express.static('public'))
 app.use('/html',express.static(__dirname + 'public/html'))
 app.use('/css',express.static(__dirname + 'public/css'))
 app.use('/js',express.static(__dirname + 'public/js'))
 app.use('/png',express.static(__dirname + 'public/images/png'))
-
+//setting req, res function to display main file
 app.get('/', function(req,res){
+    //serves the main file
     res.sendFile(__dirname + '/public/index.html')
 });
+//setting req,res function to display generated file
+app.get('/public/:generated_pg',function(req,res){
+    res.sendFile(__dirname + 'public/generated_pg')
+})
 
+//server listening
 app.listen(port, () => console.info('listening on port' ,{port}));
