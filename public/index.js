@@ -1,12 +1,6 @@
-/*
- * Add your JavaScript to this file to complete the assignment.  Don't forget
- * to add your name and @oregonstate email address below.
- *
- * Name: Aileen Abril Castro-Guzman
- * Email: castroga@oregonstate.edu
- */
-
 console.log("== document:", document)
+import myJson from './outfitData.json' assert {type: 'json'}
+console.log("== shirts:", myJson.shirts)
 
 /* Referenced:  https://www.youtube.com/watch?v=y_5P8KuxnbY&t=66s for image sliders */
 /* image slider for shirts */ 
@@ -90,13 +84,13 @@ cancel.onclick = function() {
     modalBack.style.display = "none"
 }
 
-// /* when the user clicks anywhere outside of the modal, close it */
-// window.onclick = function(event) {
-//   if (event.target == modal) {
-//     modal.style.display = "none"
-//     modalBack.style.display = "none"
-//   }
-// }
+/* when the user clicks anywhere outside of the modal, close it */
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none"
+    modalBack.style.display = "none"
+  }
+}
 
 
 var closetContainer = document.querySelector(".closet-container")

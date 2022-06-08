@@ -39,6 +39,7 @@ server.listen(port, function() {
 })*/
 // website server using express
 const express = require('express');
+var exphbs = require('express-handlebars');
 const app = express();
 const port = 3000;
 //gathering alll files
