@@ -5,7 +5,7 @@ console.log("== document:", document)
 var imgbtn = document.querySelector('.shirt-image');
 var images = ['shirt-one.PNG', 'shirt-two.PNG', 'shirt-three.PNG', 
 'shirt-four.PNG', 'shirt-five.PNG', 'shirt-six.PNG', 'shirt-seven.PNG', 
-'shirt-eight.PNG', 'shirt-nine.PNG', 'shirt-ten.PNG'];
+'shirt-eight.PNG', 'shirt-nine.PNG'];
 var i = 0;
 
 function prev() {
@@ -68,7 +68,7 @@ function handleModalAcceptClick() {
         alert("You must fill in all of the fields!")
     }
     else{
-        var reqUrl = "/closet/" + getClosetIdFromURL() + "/addShirt"
+        var reqUrl = "/closet/addShirt"
         fetch(reqUrl, {
           method: 'POST',
           body: JSON.stringify({
@@ -80,26 +80,28 @@ function handleModalAcceptClick() {
           }
         }).then(function (res) {
           if (res.status === 200) {
-            var shirtTemplate = Handlebars.templates.shirt
-            var newShirtHTML = shirtTemplate({
+            var shirtTemplate = Handlebars.templates.shirt({
               id: shirtId,
               url: shirtURL
             })
             var shirtContainer = document.querySelector('.shirt-container')
-            shirtContainer.insertAdjacentHTML('beforeend', newShirtHTML)
+            shirtContainer.insertAdjacentHTML('beforeend', shirtTemplate)
             return res.text()
           } else {
             alert("An error occurred adding your shirt")
           }
-        }).then(function (body) {
-          console.log("== response body:", body)
+        // }).then(function (body) {
+        //   console.log("== response body:", body)
         }).catch(function (err) {
-          alert("An error occurred adding your shirt from catch() clause")
-        })
+          //  alert("An error occurred adding your shirt from catch() clause")
+       })
 
         hideModal()
-    }
+        window.location.href = reqUrl
+  }
+
 }
+
 
 function showModal() {
 
@@ -143,10 +145,10 @@ window.addEventListener('DOMContentLoaded', function () {
   var addShirtButton = document.getElementById('add-shirt-button')
   addShirtButton.addEventListener('click', showModal)
 
-  var modalAcceptButton = document.getElementById('modal-accept')
+  var modalAcceptButton = document.getElementsByClassName('modal-accept-button')[0]
   modalAcceptButton.addEventListener('click', handleModalAcceptClick)
 
-  var modalHideButtons = document.getElementsByClassName('modal-hide-button')
+  var modalHideButtons = document.getElementsByClassName('modal-hide-button')[0]
   for (var i = 0; i < modalHideButtons.length; i++) {
     modalHideButtons[i].addEventListener('click', hideModal)
   }
