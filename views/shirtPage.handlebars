@@ -1,0 +1,17 @@
+<main class="shirt-page">
+
+  <div class="title-container">
+    <h1>Photos of {{closetId}}</h1>
+  </div>
+
+  <div class="shirt-container">
+
+    {{#each shirts}}
+      {{> shirt}}
+    {{/each}}
+
+  </div>
+
+</main>
+
+{{> addShirtButtonModal}}

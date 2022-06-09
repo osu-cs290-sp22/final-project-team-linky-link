@@ -1,62 +1,73 @@
-/*var http = require('http')
-var fs = require('fs');
-var port = process.env.PORT || 3000;
+var fs = require('fs')
+var express = require('express')
+var exphbs = require('express-handlebars')
 
-console.log("== loading Main Page")
-var HTML_open = fs.readFileSync('index.html')
-console.log("== loading JS")
-var JS_open = fs.readFileSync('index.js')
-console.log("== loading CSS")
-var STYLE_open = fs.readFileSync('style.css')
-console.log("== loading Images")
-//var
+var closetData = require('./closetData.json')
 
-var server = http.createServer(function(req, res) {
-    console.log("== Requested")
+var app = express()
+var port = process.env.PORT || 8000
 
-    if ((req.url === '/index.html' ) || (req.url === '/')) {
-        res.writeHead(200, {
-            "Content-Type": "text/html"
-        })
-        res.write(HTML_open)
-    } else if (req.url === '/index.js') {
-        res.writeHead(200, {
-            "Content-Type": "application/javascript"
-        })
-        res.write(JS_open)
-    } else if (req.url === '/style.css') {
-        res.writeHead(200, {
-            "Content-Type": "text/css"
-        })
-        res.write(STYLE_open)
-    }
-    
-    res.end()
-})
+app.engine('handlebars', exphbs.engine({ defaultLayout: 'main' }))
+app.set('view engine', 'handlebars')
 
-server.listen(port, function() {
-    console.log("== Server is listening on port " + port)
-})*/
-// website server using express
-const express = require('express');
-var exphbs = require('express-handlebars');
-const app = express();
-const port = 3000;
-//gathering alll files
+app.use(express.json())
+
 app.use(express.static('public'))
-app.use('/html',express.static(__dirname + 'public/html'))
-app.use('/css',express.static(__dirname + 'public/css'))
-app.use('/js',express.static(__dirname + 'public/js'))
-app.use('/png',express.static(__dirname + 'public/images/png'))
-//setting req, res function to display main file
-app.get('/', function(req,res){
-    //serves the main file
-    res.sendFile(__dirname + '/public/index.html')
-});
-//setting req,res function to display generated file
-app.get('/public/:generated_pg',function(req,res){
-    res.sendFile(__dirname + 'public/generated_pg')
+
+app.get('/', function (req, res, next) {
+  res.status(200).render('homepage')
 })
 
-//server listening
-app.listen(port, () => console.info('listening on port' ,{port}));
+app.get('/closet', function (req, res, next) {
+  res.status(200).render('closet', {
+    closet: closetData
+  })
+})
+
+app.get('/closet/:shirt', function (req, res, next) {
+  var shirt = req.params.shirt.toLowerCase()
+  if (closetData[shirt]) {
+    res.status(200).render('shirtPage', closetData[shirt])
+  } else {
+    next()
+  }
+})
+
+app.post('/closet/:shirt/addShirt', function (req, res, next) {
+  var shirt = req.params.shirt.toLowerCase()
+  if (closetData[shirt]) {
+    console.log("  - req.body:", req.body)
+    if (req.body && req.body.id && req.body.url) {
+      closetData[shirt].shirts.push({
+        id: req.body.id,
+        url: req.body.url
+      })
+      console.log("  - closetData[" + shirt + "]:", closetData[shirt])
+      fs.writeFile(
+        "./closetData.json",
+        JSON.stringify(closetData, null, 2),
+        function (err) {
+          if (!err) {
+            res.status(200).send("Shirt successfully uploaded!!!")
+          } else {
+            res.status(500).send("Error: error uploading shirt")
+          }
+        }
+      )
+    } else {
+      res.status(400).send("Error: request body needs a 'url' and 'id'")
+    }
+  } else {
+    next()
+  }
+})
+
+app.get('*', function (req, res, next) {
+  res.status(404).render('404', {
+    page: req.url
+  })
+})
+
+app.listen(port, function () {
+  console.log("== Server listening on port", port)
+})

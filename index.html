@@ -72,48 +72,38 @@
 
     </main>
 
-    <button type="button" id="create-outfit-button">
-        <p class="outfit-button"> 
-            Create outfit
-        </p>
+    <button type="button" id="add-shirt-button">
+      <p class="shirt-button"> 
+          Add a shirt
+      </p>
     </button>
-
+    
     <div id="modal-backdrop" class="hidden"></div>
-    <div id="create-outfit-modal" class="hidden">
-      <div class="modal-dialog">
-
+    <div id="add-shirt-modal" class="hidden">
+        <div class="modal-dialog">
+    
         <div class="modal-header">
-          <h3>Name your outfit</h3>
-          <button type="button" class="modal-close-button">&times;</button>
+            <h3>Add a shirt</h3>
+            <button type="button" class="modal-close-button">&times;</button>
         </div>
-
+    
         <div class="modal-body">
-          <div class="name-input-element">
-            <label for="name-text-input">Outfit name: </label>
-            <textarea id="name-text-input"></textarea>
-          </div>
+            <div class="shirt-input-element">
+            <label for="shirt-url-input">Shirt URL: </label>
+            <textarea id="shirt-url-input"></textarea>
+            </div>
+            <div class="shirt-input-element">
+            <label for="shirt-id-input">Shirt ID: </label>
+            <textarea id="shirt-id-input"></textarea>
+            </div> 
         </div>
-
-        <div class="modal-body">
-          <div class="shirt-input-element">
-            <label for="shirt-text-input">Enter the number of shirt you chose: </label>
-            <textarea id="shirt-text-input"></textarea>
-          </div>
-        </div>
-
-        <div class="modal-body">
-          <div class="bottoms-input-element">
-            <label for="bottoms-text-input">Enter the number of bottoms you chose: </label>
-            <textarea id="bottoms-text-input"></textarea>
-          </div>
-        </div>
-
+    
         <div class="modal-footer">
-          <button type="button" class="modal-cancel-button">Cancel</button>
-          <button type="button" class="modal-accept-button">Create Outfit</button>
+            <button type="button" class="modal-cancel-button">Cancel</button>
+            <button type="button" class="modal-accept-button">Add shirt to closet</button>
         </div>
-
-      </div>
+    
+        </div>
     </div>
 
   </body>

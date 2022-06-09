@@ -1,0 +1,51 @@
+<main class="closet-container">
+
+  <article class="shirts">
+    <div class="shirt-content">
+      <p class="shirt-text">
+        Select a shirt for your outfit.
+      </p>
+    </div>
+  </article>
+
+  <article class="image-box">
+    <div class="image">
+      <img class="shirt-image" src="images/shirt-one.PNG" alt="Image of Padme's shirt">
+    </div>
+    <button class="btn" onclick="prev()">Previous</button>
+    <button class="btn" onclick="next()">Next</button>
+  </article>
+
+  <article class="bottoms">
+    <div class="bottom-content">
+      <p class="bottom-text">
+        Select bottoms for your outfit.
+      </p>
+    </div>
+  </article>
+
+  <article class="image-box">
+    <div class="image">
+      <img class="bottoms-image" src="images/bottoms-one.PNG" alt="Image of Padme's pants">
+    </div>
+    <button class="btn" onclick="prevB()">Previous</button>
+    <button class="btn" onclick="nextB()">Next</button>
+  </article>
+
+</main>
+
+{{> addShirtButtonModal}}
+
+{{!-- <main class="closet-page">
+
+  <div class="title-container">
+    <h2>Check out your closet:</h2>
+  </div>
+
+  {{#each closet}}
+    <div class="closet-card">
+      <a href="/closet/{{@key}}">{{closetId}}</a>
+    </div>
+  {{/each}}
+
+</main> --}}

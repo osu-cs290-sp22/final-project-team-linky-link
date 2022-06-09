@@ -2,10 +2,14 @@
   "name": "final-project-team-linky-link",
   "version": "1.0.0",
   "description": "**Demo with Rob Hess at 2:50pm on Thursday, 6/09/2022**",
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "build": "handlebars views/partials/shirt.handlebars -f public/shirtTemplate.js",
+    "prestart": "npm run build",
+    "predev": "npm run build"
   },
   "repository": {
     "type": "git",

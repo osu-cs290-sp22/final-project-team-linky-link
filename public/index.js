@@ -1,6 +1,4 @@
 console.log("== document:", document)
-import myJson from './outfitData.json' 
-console.log("== shirts:", myJson.shirts)
 
 /* Referenced:  https://www.youtube.com/watch?v=y_5P8KuxnbY&t=66s for image sliders */
 /* image slider for shirts */ 
@@ -48,121 +46,109 @@ function setImgB() {
   return imgbtnB.setAttribute('src', 'images/' + imagesB[j]);
 }
 
-/* Referenced:  https://www.w3schools.com/howto/howto_css_modals.asp for unhiding modal */
-/* get the modal */ 
-var modal = document.getElementById("create-outfit-modal")
-var modalBack = document.getElementById("modal-backdrop")
-
-/* get the button that opens the modal */
-var btn = document.getElementById("create-outfit-button")
-
-/* get the <span> element that closes the modal */
-var span = document.getElementsByClassName("modal-close-button")[0]
-
-/* get the cancel button that closes the modal */
-var cancel = document.getElementsByClassName("modal-cancel-button")[0]
-
-var outfitInput = document.getElementById('name-text-input')
-var shirtInput = document.getElementById('shirt-text-input')
-var bottomsInput = document.getElementById('bottoms-text-input')
-
-
-/* when the user clicks on the button, open the modal */
-btn.onclick = function() {
-  modal.style.display = "block"
-  modalBack.style.display = "block"
-  outfitInput.value = ""
-}
-
-/* when the user clicks on <span> (x), close the modal */
-span.onclick = function() {
-  modal.style.display = "none"
-  modalBack.style.display = "none"
-}
-
-/* when the user clicks cancel, close the modal */
-cancel.onclick = function() {
-    modal.style.display = "none"
-    modalBack.style.display = "none"
-}
-
-/* when the user clicks anywhere outside of the modal, close it */
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none"
-    modalBack.style.display = "none"
+/*
+ * This function gets the closet ID from the current URL.  For example, if the
+ * current URL path is  "/closet/shirts", this function will return "shirts".
+ */
+function getClosetIdFromURL() {
+  var path = window.location.pathname
+  var pathParts = path.split('/')
+  if (pathParts[1] === "closet") {
+    return pathParts[2]
+  } else {
+    return null
   }
 }
 
-
-var closetContainer = document.querySelector(".closet-container")
-
-// function createNewOutfit(outfit) {
-//     var closetSection = document.createElement('article')
-//     closetSection.classList.add('shirts')
-
-//     var closetContainerDiv = document.createElement('div')
-//     closetContainerDiv.classList.add('twit-icon')
-//     closetSection.appendChild(closetContainerDiv)
-
-//     var fas = document.createElement('i')
-//     fas.classList.add('fas')
-//     fas.classList.add('fa-bullhorn')
-//     twitContainerDiv.appendChild(fas)
-
-//     var contentDiv = document.createElement('div')
-//     contentDiv.classList.add('outfit-content')
-//     outfitSection.appendChild(contentDiv)
-
-//     var outfitText = document.createElement('p')
-//     outfitText.classList.add('outfit-text')
-//     outfitText.outfitContent = outfit
-//     contentDiv.appendChild(twitText)
-
-//     closetContainer.appendChild(closetSection)
-
-//     console.log("== closetSection:", closetSection)
-// }
-
-/* get the button that adds the outfit */
-var add = document.getElementsByClassName("modal-accept-button")[0]
-
-var outfitWords = []
-var shirtWords = []
-var bottomsWords = []
-
-function handleOutfitWordsEntered(event) {
-  console.log("== handleOutfitWordsEntered() called")
-  outfitWords = event.currentTarget.value
-  console.log("  - outfit:", outfitWords)
-}
-
-outfitInput.addEventListener('change', handleOutfitWordsEntered)
-
-function handleShirtWordsEntered(event) {
-  console.log("== handleShirtWordsEntered() called")
-  shirtWords = event.currentTarget.value
-  console.log("  - shirt:", shirtWords)
-}
-
-shirtInput.addEventListener('change', handleShirtWordsEntered)
-
-function handleBottomsWordsEntered(event) {
-  console.log("== handleBottomsWordsEntered() called")
-  bottomsWords = event.currentTarget.value
-  console.log("  - bottoms:", bottomsWords)
-}
-
-bottomsInput.addEventListener('change', handleBottomsWordsEntered)
-
-/* when the user clicks add, close the modal and add twit */
-add.onclick = function() {
-    if(outfitInput.value == ""){
-        alert("Input cannot be left blank")
+/* when the user clicks add, close the modal and add shirt */
+function handleModalAcceptClick() {
+  var shirtId = document.getElementById('shirt-id-input').value.trim()
+  var shirtURL = document.getElementById('shirt-url-input').value.trim()
+    if(!shirtId || !shirtURL){
+        alert("You must fill in all of the fields!")
     }
     else{
-        modal.style.display = "none"
-        modalBack.style.display = "none"
-        //createNewOutfit(outfitWords)
+        var reqUrl = "/closet/" + getClosetIdFromURL() + "/addShirt"
+        fetch(reqUrl, {
+          method: 'POST',
+          body: JSON.stringify({
+            id: shirtId,
+            url: shirtURL
+          }),
+          headers: {
+            'Content-Type': 'application/json'
+          }
+        }).then(function (res) {
+          if (res.status === 200) {
+            var shirtTemplate = Handlebars.templates.shirt
+            var newShirtHTML = shirtTemplate({
+              id: shirtId,
+              url: shirtURL
+            })
+            var shirtContainer = document.querySelector('.shirt-container')
+            shirtContainer.insertAdjacentHTML('beforeend', newShirtHTML)
+            return res.text()
+          } else {
+            alert("An error occurred adding your shirt")
+          }
+        }).then(function (body) {
+          console.log("== response body:", body)
+        }).catch(function (err) {
+          alert("An error occurred adding your shirt from catch() clause")
+        })
+
+        hideModal()
     }
 }
+
+function showModal() {
+
+  var modal = document.getElementById('add-shirt-modal')
+  var modalBackdrop = document.getElementById('modal-backdrop')
+
+  modal.classList.remove('hidden')
+  modalBackdrop.classList.remove('hidden')
+
+}
+
+
+function clearModalInputs() {
+
+  var modalInputElements = document.querySelectorAll('#add-shirt-modal input')
+  for (var i = 0; i < modalInputElements.length; i++) {
+    modalInputElements[i].value = ''
+  }
+
+}
+
+
+function hideModal() {
+
+  var modal = document.getElementById('add-shirt-modal')
+  var modalBackdrop = document.getElementById('modal-backdrop')
+
+  modal.classList.add('hidden')
+  modalBackdrop.classList.add('hidden')
+
+  clearModalInputs()
+
+}
+
+
+/*
+ * Wait until the DOM content is loaded, and then hook up UI interactions, etc.
+ */
+window.addEventListener('DOMContentLoaded', function () {
+
+  var addShirtButton = document.getElementById('add-shirt-button')
+  addShirtButton.addEventListener('click', showModal)
+
+  var modalAcceptButton = document.getElementById('modal-accept')
+  modalAcceptButton.addEventListener('click', handleModalAcceptClick)
+
+  var modalHideButtons = document.getElementsByClassName('modal-hide-button')
+  for (var i = 0; i < modalHideButtons.length; i++) {
+    modalHideButtons[i].addEventListener('click', hideModal)
+  }
+
+})
